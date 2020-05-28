@@ -13,9 +13,9 @@ interface LaunchesViewState { }
 export default class LaunchesView extends React.Component<LaunchesViewProps, LaunchesViewState> {
     render() {
         return <section id="launches">
-            <h1>&nbsp;&nbsp;Prochains lancements</h1>
+            <h1>&nbsp;&nbsp;Calendrier des lancements</h1>
             <div className="author-credits">
-                Made by <a href="https://www.baptiste-drillien.com" target="_blank" rel="noopener noreferrer">Baptiste Drillien</a>
+                Fait par <a href="https://www.baptiste-drillien.com" target="_blank" rel="noopener noreferrer">Baptiste Drillien</a>
                 &nbsp;🚀
             </div>
             <div className="launches-list">

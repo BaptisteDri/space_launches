@@ -1,4 +1,5 @@
 import { Rocket } from './rocket'
+import { Location } from './location'
 
 export interface Launch {
     name: string
@@ -8,4 +9,5 @@ export interface Launch {
     windowend: string // date fin fenêtre de tir
     probability: number
     rocket: Rocket
+    location: Location
 }
