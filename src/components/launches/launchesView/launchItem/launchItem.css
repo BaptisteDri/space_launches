@@ -1,0 +1,39 @@
+#launches div.launch-item {
+    border-radius: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 150px;
+    width: stretch;
+    padding: 15px 17px;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    margin-bottom: 30px;
+    background: linear-gradient(225deg, #202225, #27292c);
+    box-shadow:  -5px 5px 10px #1f2023, 5px -5px 10px #292c2f;
+}
+.image-container {
+    height: 100%;
+    width: 120px;
+    border-radius: 20px;
+    overflow: hidden;
+    background-position: center;
+    background-size: cover;
+}
+.launch-info {
+    padding-left: 10px;
+    width: calc(100% - 110px);
+}
+.launch-info h2 {
+    font-weight: 700;
+    color: #FFFFFE;
+}
+.launch-info p {
+    font-size: 0.9em;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+.launch-info span {
+    font-size: 0.9em;
+    opacity: 0.7;
+}

@@ -3,10 +3,9 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import * as serviceWorker from './serviceWorker'
 
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import App from './App'
-import LaunchesView from './components/launches/launchesView/LaunchesView'
 
 ReactDOM.render(
     <React.StrictMode>
