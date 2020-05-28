@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './App.css'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import NavBar from './components/navBar/NavBar'
+import LaunchesView from './components/launches/launchesView/LaunchesView'
+
+interface AppProps {
+    route: 'launches' | 'rockets' | 'agencies'
 }
 
-export default App;
+const App: React.FC<AppProps> = ({route}: AppProps) => {
+    return <div>    
+        <main>
+            {route}
+            {/* {
+                route === 'launches' &&
+                <LaunchesView />
+            }
+            {
+                route === 'rockets' &&
+                <div>LISTE DES FUSEES</div>
+            }
+            {
+                route === 'agencies' &&
+                <div>LISTE DES AGENCES SPATIALES</div>
+            } */}
+        </main>
+        <NavBar />
+    </div>
+}
+
+export default App
