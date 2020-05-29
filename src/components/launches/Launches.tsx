@@ -55,7 +55,6 @@ export default class Launches extends React.Component<LaunchesProps, LaunchesSta
                 return false
             }
         })
-        console.log(displayedLaunches)
         this.setState({ displayedLaunches })
     }
 

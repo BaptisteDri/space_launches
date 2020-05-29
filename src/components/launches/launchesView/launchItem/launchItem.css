@@ -57,6 +57,7 @@
     width: fit-content;
 }
 
+
 @media only screen and (min-width: 800px) {
     .launch-info a {
         display: inline-block;
