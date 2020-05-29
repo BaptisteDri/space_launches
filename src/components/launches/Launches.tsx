@@ -21,7 +21,7 @@ export default class Launches extends React.Component<LaunchesProps, LaunchesSta
     }
 
     componentDidMount() {
-        fetch('https://launchlibrary.net/1.4/launch?next=10&mode=verbose')
+        fetch('https://launchlibrary.net/1.4/launch?next=100&mode=verbose')
         .then(res => res.json())
         .then(result => {
             this.setState({
