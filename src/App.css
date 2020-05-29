@@ -60,10 +60,15 @@ main {
 }
 
 .author-credits {
-	font-size: 0.5em;
+	font-size: 0.7em;
 	opacity: 0.5;
 	text-align: center;
-	margin-top: 5px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.author-credits span:first-of-type {
+    margin-bottom: 5px;
 }
 
 h1 {

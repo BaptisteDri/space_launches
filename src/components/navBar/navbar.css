@@ -1,6 +1,7 @@
 nav {
     height: 70px;
     width: calc(100% - 30px);
+    max-width: 500px;
     border-radius: 60px;
     background: linear-gradient(225deg, #202225, #27292c);
     box-shadow:  -5px 5px 10px #1f2023, 5px -5px 10px #292c2f;

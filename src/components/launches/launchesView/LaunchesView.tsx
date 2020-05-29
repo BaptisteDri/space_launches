@@ -15,8 +15,12 @@ export default class LaunchesView extends React.Component<LaunchesViewProps, Lau
         return <section id="launches">
             <h1>&nbsp;&nbsp;Calendrier des lancements</h1>
             <div className="author-credits">
-                Fait par <a href="https://www.baptiste-drillien.com" target="_blank" rel="noopener noreferrer">Baptiste Drillien</a>
-                &nbsp;🚀
+                <span>
+                    Remerciements <a href="https://launchlibrary.net" target="_blank" rel="noopener noreferrer">Launch library</a>&nbsp;🛰️
+                </span>
+                <span>
+                    Fait par <a href="https://www.baptiste-drillien.com" target="_blank" rel="noopener noreferrer">Baptiste Drillien</a>&nbsp;🚀
+                </span>
             </div>
             <div className="launches-list">
 

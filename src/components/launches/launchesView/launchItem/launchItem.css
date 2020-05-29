@@ -3,7 +3,9 @@
     margin-left: auto;
     margin-right: auto;
     height: 100px;
+    min-height: fit-content;
     width: stretch;
+    max-width: 700px;
     padding: 15px;
     display: flex;
     flex-direction: row;
@@ -29,6 +31,20 @@
     color: #FFFFFE;
 }
 .launch-info p {
-    font-size: 0.9em;
-    margin-top: 8px;
+    font-size: 0.8em;
+    margin-top: 15px;
+}
+.launch-info .date {
+    text-transform: capitalize;
+    color: #FFFFFE;
+}
+.launch-info .date span {
+    font-size: 0.8em;
+}
+.launch-info a {
+    color: #7f5af0;
+    font-size: 0.8em;
+    margin-top: 15px;
+    display: block;
+    text-decoration: none;
 }

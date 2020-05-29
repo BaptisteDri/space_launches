@@ -2,6 +2,7 @@ import React from 'react'
 import './launchItem.css'
 
 import { Launch } from '../../../../types/launch'
+import { Link } from 'react-router-dom'
 
 const countries = require('../../../../iso3ToCountryNames.json')
 
@@ -35,36 +36,38 @@ export default class LaunchItem extends React.Component<LaunchItemProps, LaunchI
             <div className="launch-item">
                 <div
                     className="image-container"
-                    style={{
-                        backgroundImage: `url(${launch.rocket.imageURL})`
-                    }}
+                    style={
+                        (launch.rocket.imageURL !== 'https://launchlibrary1.nyc3.digitaloceanspaces.com/RocketImages/placeholder_1920.png')
+                        ? { backgroundImage: `url(${launch.rocket.imageURL})` }
+                        : { backgroundImage: `url('/rocket_image_placeholder.svg')` }
+                    }
                 >
                 </div>
                 <div className="launch-info">
                     <h2>{launch.name}</h2>
                     <p>
-                        <span>
+                        <span className="date">
                             {this.state.launchDate.toLocaleString('fr-FR', {
                                 hour12: false,
                                 weekday: 'long',
                                 day: 'numeric',
                                 month: 'long'
                             })}
-                        </span>
-                        &nbsp;-&nbsp;
-                        <span>
-                            {this.state.launchDate.toLocaleTimeString('fr-FR')}
+                            &nbsp;-&nbsp;
+                            {(this.state.launchDate.toLocaleTimeString('fr-FR'))}<span>&nbsp; GMT+2:00</span> 
                         </span>
                     </p>
                     {
                         launch.rocket && launch.rocket.agencies &&  launch.rocket.agencies.length > 0 && launch.rocket.agencies[0].name.length > 10 &&
-                        <p>{launch.rocket.agencies[0].abbrev} ({countries[launch.rocket.agencies[0].countryCode]})</p> // TODO : Replace by a link to the agency item page
+                        <Link to="">{launch.rocket.agencies[0].abbrev} ({countries[launch.rocket.agencies[0].countryCode]})</Link> // TODO : Replace by a link to the agency item page
                     }
                     {
                         launch.rocket && launch.rocket.agencies &&  launch.rocket.agencies.length > 0 && launch.rocket.agencies[0].name.length <= 10 &&
-                        <p>{launch.rocket.agencies[0].name} ({countries[launch.rocket.agencies[0].countryCode]})</p> // TODO : Replace by a link to the agency item page
+                        <Link to="">{launch.rocket.agencies[0].name} ({countries[launch.rocket.agencies[0].countryCode]})</Link> // TODO : Replace by a link to the agency item page
                     }
-                    <p>{countries[launch.location.countryCode]}</p>
+                    <Link to="">
+                        {launch.rocket.name}
+                    </Link>
                 </div>
             </div>
         </div>
