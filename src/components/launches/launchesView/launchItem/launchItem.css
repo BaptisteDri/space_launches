@@ -21,6 +21,7 @@
     overflow: hidden;
     background-position: top;
     background-size: cover;
+    background-repeat: no-repeat;
 }
 .launch-info {
     padding-left: 10px;
@@ -48,4 +49,12 @@
     display: block;
     text-decoration: none;
     width: fit-content;
+}
+
+@media only screen and (min-width: 800px) {
+    .launch-info a {
+        display: inline-block;
+        margin-right: 20px;
+        margin-top: 15px;
+    }
 }

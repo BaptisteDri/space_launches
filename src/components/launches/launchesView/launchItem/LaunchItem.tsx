@@ -37,9 +37,9 @@ export default class LaunchItem extends React.Component<LaunchItemProps, LaunchI
                 <div
                     className="image-container"
                     style={
-                        (launch.rocket.imageURL !== 'https://launchlibrary1.nyc3.digitaloceanspaces.com/RocketImages/placeholder_1920.png')
+                        (launch.rocket.imageURL !== 'https://launchlibrary1.nyc3.digitaloceanspaces.com/RocketImages/placeholder_1920.png' && typeof launch.rocket.imageURL === 'string')
                         ? { backgroundImage: `url(${launch.rocket.imageURL})` }
-                        : { backgroundImage: `url('/rocket_image_placeholder.svg')` }
+                        : { backgroundImage: `url(${process.env.PUBLIC_URL}/rocket_image_placeholder.svg)` }
                     }
                 >
                 </div>
@@ -54,7 +54,7 @@ export default class LaunchItem extends React.Component<LaunchItemProps, LaunchI
                                 month: 'long'
                             })}
                             &nbsp;-&nbsp;
-                            {(this.state.launchDate.toLocaleTimeString('fr-FR'))}<span>&nbsp; GMT+2:00</span> 
+                            {(this.state.launchDate.toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'}))}<span>&nbsp; GMT+2:00</span> 
                         </span>
                     </p>
                     {

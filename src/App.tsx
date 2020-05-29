@@ -24,7 +24,7 @@ const App: React.FC<AppProps> = ({route}: AppProps) => {
                     <h1>En cours de développement</h1>
                 }
             </main>
-        <NavBar route={route} />
+        <NavBar />
     </div>
 }
 
