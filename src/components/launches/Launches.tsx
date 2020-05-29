@@ -24,7 +24,7 @@ export default class Launches extends React.Component<LaunchesProps, LaunchesSta
         this.handleSearchFiltering = this.handleSearchFiltering.bind(this)
     }
     componentDidMount() {
-        fetch('https://launchlibrary.net/1.4/launch?next=50&mode=verbose')
+        fetch('https://launchlibrary.net/1.4/launch?next=60&mode=verbose')
         .then(res => res.json())
         .then(result => {
             

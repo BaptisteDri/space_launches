@@ -51,7 +51,8 @@
     font-size: 16px;
 }
 
-.search-input-container label {
+.search-input-container label,
+.search-input-container span {
     height: 100%;
     width: 60px;
     display: flex;
@@ -59,7 +60,9 @@
     align-items: center;
 }
 
-.search-input-container label svg {
+.search-input-container label svg,
+.search-input-container span svg {
+    cursor: pointer;
     height: 15px;
     color: #FFFFFE;
 }

@@ -9,27 +9,9 @@ const countries = require('../../../../iso3ToCountryNames.json')
 interface LaunchItemProps {
     launch: Launch
 }
-interface LaunchItemState {
-    launchDate: Date,
-    windowStart: Date,
-    windowEnd: Date
-}
+interface LaunchItemState { }
 
 export default class LaunchItem extends React.Component<LaunchItemProps, LaunchItemState> {
-    constructor(props: LaunchItemProps) {
-        super(props)
-
-        const launchDate = new Date(this.props.launch.netstamp * 1000)
-        const windowStart = new Date(this.props.launch.windowstart)
-        const windowEnd = new Date(this.props.launch.windowend)
-
-        this.state = {
-            launchDate: launchDate,
-            windowStart: windowStart,
-            windowEnd: windowEnd
-        }
-    }
-
     render() {
         const { launch } = this.props
         return <div className="launch-item-container">
@@ -37,7 +19,7 @@ export default class LaunchItem extends React.Component<LaunchItemProps, LaunchI
                 <div
                     className="image-container"
                     style={
-                        (launch.rocket.imageURL !== 'https://launchlibrary1.nyc3.digitaloceanspaces.com/RocketImages/placeholder_1920.png' && typeof launch.rocket.imageURL === 'string')
+                        (launch.rocket.imageURL !== 'https://launchlibrary1.nyc3.digitaloceanspaces.com/RocketImages/placeholder_1920.png' && typeof launch.rocket.imageURL === 'string' && launch.rocket.imageURL.includes('://'))
                         ? { backgroundImage: `url(${launch.rocket.imageURL})` }
                         : { backgroundImage: `url(${process.env.PUBLIC_URL}/rocket_image_placeholder.svg)` }
                     }
@@ -47,14 +29,14 @@ export default class LaunchItem extends React.Component<LaunchItemProps, LaunchI
                     <h2>{launch.name.replace(/ *\([^)]*\) */g, "")}</h2>
                     <p>
                         <span className="date">
-                            {this.state.launchDate.toLocaleString('fr-FR', {
+                            {new Date(this.props.launch.netstamp * 1000).toLocaleString('fr-FR', {
                                 hour12: false,
                                 weekday: 'long',
                                 day: 'numeric',
                                 month: 'long'
                             })}
                             &nbsp;-&nbsp;
-                            {(this.state.launchDate.toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'}))}<span>&nbsp; GMT+2:00</span> 
+                            {(new Date(this.props.launch.netstamp * 1000).toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'}))}<span>&nbsp; GMT+2:00</span> 
                         </span>
                     </p>
                     {
