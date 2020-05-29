@@ -5,7 +5,7 @@
     height: 100px;
     min-height: fit-content;
     width: stretch;
-    max-width: 700px;
+    max-width: 900px;
     padding: 15px;
     display: flex;
     flex-direction: row;
@@ -44,7 +44,8 @@
 .launch-info a {
     color: #7f5af0;
     font-size: 0.8em;
-    margin-top: 15px;
+    margin-top: 7px;
     display: block;
     text-decoration: none;
+    width: fit-content;
 }

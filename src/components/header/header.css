@@ -1,0 +1,21 @@
+.author-credits {
+	font-size: 0.7em;
+	opacity: 0.5;
+	text-align: center;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.author-credits span:first-of-type {
+    margin-bottom: 5px;
+}
+
+h1 {
+    margin-top: 30px;
+    font-size: 1.6em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	font-weight: 700;
+	color: #FFFFFE;
+}

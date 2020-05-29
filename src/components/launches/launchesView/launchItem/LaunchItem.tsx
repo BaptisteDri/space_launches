@@ -44,7 +44,7 @@ export default class LaunchItem extends React.Component<LaunchItemProps, LaunchI
                 >
                 </div>
                 <div className="launch-info">
-                    <h2>{launch.name}</h2>
+                    <h2>{launch.name.replace(/ *\([^)]*\) */g, "")}</h2>
                     <p>
                         <span className="date">
                             {this.state.launchDate.toLocaleString('fr-FR', {
@@ -58,14 +58,15 @@ export default class LaunchItem extends React.Component<LaunchItemProps, LaunchI
                         </span>
                     </p>
                     {
-                        launch.rocket && launch.rocket.agencies &&  launch.rocket.agencies.length > 0 && launch.rocket.agencies[0].name.length > 10 &&
-                        <Link to="">{launch.rocket.agencies[0].abbrev} ({countries[launch.rocket.agencies[0].countryCode]})</Link> // TODO : Replace by a link to the agency item page
+                        launch.rocket && launch.rocket.agencies &&  launch.rocket.agencies.length > 0 && launch.rocket.agencies[0].name.length > 15 &&
+                        <Link to=""><span>Agence - </span>{launch.rocket.agencies[0].abbrev} ({countries[launch.rocket.agencies[0].countryCode]})</Link> // TODO : Replace by a link to the agency item page
                     }
                     {
-                        launch.rocket && launch.rocket.agencies &&  launch.rocket.agencies.length > 0 && launch.rocket.agencies[0].name.length <= 10 &&
-                        <Link to="">{launch.rocket.agencies[0].name} ({countries[launch.rocket.agencies[0].countryCode]})</Link> // TODO : Replace by a link to the agency item page
+                        launch.rocket && launch.rocket.agencies &&  launch.rocket.agencies.length > 0 && launch.rocket.agencies[0].name.length <= 15 &&
+                        <Link to=""><span>Agence - </span>{launch.rocket.agencies[0].name} ({countries[launch.rocket.agencies[0].countryCode]})</Link> // TODO : Replace by a link to the agency item page
                     }
                     <Link to="">
+                        <span>Fusée - </span>
                         {launch.rocket.name}
                     </Link>
                 </div>
