@@ -1,5 +1,19 @@
+#launches {
+    height: 100%;
+}
+
+.fake-header {
+    height: 100px;
+    background-color: #242629;
+}
+
 #launches div.launches-list {
-    margin: 30px auto 0 auto;
+    padding: 0 10px;
+    padding-top: 25px;
+    min-height: calc(100% - 300px);
+    overflow-y: auto;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
+    padding-bottom: 95px;
 }

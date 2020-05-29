@@ -12,7 +12,13 @@
     overflow: hidden;
     margin-bottom: 30px;
     background: linear-gradient(225deg, #202225, #27292c);
-    box-shadow:  -5px 5px 10px #1f2023, 5px -5px 10px #292c2f;
+    box-shadow:  -5px 5px 6px #1e2022, 5px -5px 6px #2a2c30;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#launches div.launch-item:hover {
+    transition: 0.3s;
+    transform: scale(1.1);
 }
 .image-container {
     height: 100%;

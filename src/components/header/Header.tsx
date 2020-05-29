@@ -7,7 +7,9 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ h1 }: HeaderProps) => {
     return <header>
-        <h1>{h1}</h1>
+        <div>
+            <h1>{h1}</h1>
+        </div>
         <div className="author-credits">
             <span>
                 Remerciements <a href="https://launchlibrary.net" target="_blank" rel="noopener noreferrer">Launch library</a>&nbsp;🛰️

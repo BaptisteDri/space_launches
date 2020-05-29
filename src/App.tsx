@@ -10,20 +10,20 @@ interface AppProps {
 
 const App: React.FC<AppProps> = ({route}: AppProps) => {
     return <div id="app">
-            <main>
-                {
-                    route === 'launches' &&
-                    <Launches />
-                }
-                {
-                    route === 'rockets' &&
-                    <h1>En cours de développement</h1>
-                }
-                {
-                    route === 'agencies' &&
-                    <h1>En cours de développement</h1>
-                }
-            </main>
+        <main>
+            {
+                route === 'launches' &&
+                <Launches />
+            }
+            {
+                route === 'rockets' &&
+                <h1>En cours de développement</h1>
+            }
+            {
+                route === 'agencies' &&
+                <h1>En cours de développement</h1>
+            }
+        </main>
         <NavBar />
     </div>
 }

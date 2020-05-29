@@ -6,6 +6,15 @@ nav {
     background: linear-gradient(225deg, #202225, #27292c);
     box-shadow:  -5px 5px 10px #1f2023, 5px -5px 10px #292c2f;
     margin: 10px auto 0 auto;
+    position: fixed;
+    right: 0;
+    bottom: 25px;
+    left: 0;
+    transition: 0.3s;
+}
+a:hover li, a:hover li * {
+    color: #7f5af0;
+    transition: 0.3s;
 }
 nav ul {
     display: flex;
@@ -31,9 +40,11 @@ nav ul a li {
     align-items: center;
     color: #fffffe;
     font-size: 0.8em;
+    transition: 0.3s;
 }
 nav ul li span svg {
     margin-bottom: 5px;
     height: 20px;
     color: #fffffe;
+    transition: 0.3s;
 }

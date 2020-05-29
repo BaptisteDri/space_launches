@@ -53,11 +53,10 @@ html, body, #root, #app {
 }
 
 main {
-	height: calc(100% - 130px);
-	padding: 10px 15px;
+    /* height: calc(100% - 130px); */
+    height: 100%;
+	/* padding: 10px 15px; */
     margin: 0 auto;
-    overflow-y: auto;
-    overflow-x: hidden;
 }
 
 .loader {
@@ -67,7 +66,7 @@ main {
     width: 151px;
     height: 54px;
     font-size: 0;
-    margin: 200px auto 0 auto;
+    margin: auto;
 }
 .loader > .elem {
     display: inline-block;
