@@ -7,6 +7,15 @@
     background-color: #242629;
 }
 
+.month-name {
+    text-align: center;
+    margin: 20px 0 15px 0;
+    color: #FFFFFE;
+    font-weight: 700;
+    text-transform: capitalize;
+    font-size: 1.3em;
+}
+
 #launches div.launches-list {
     padding: 0 10px;
     padding-top: 25px;

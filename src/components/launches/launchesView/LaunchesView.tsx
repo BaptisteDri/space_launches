@@ -1,14 +1,14 @@
 import React from 'react'
 import './launchesView.css'
 
-import { Launch } from '../../../types/launch'
+import { OrderedLaunches } from '../../../types/launch'
 import LaunchItem from './launchItem/LaunchItem'
 import Header from '../../header/Header'
 import SearchInput from '../../searchInput/SearchInput'
 
 interface LaunchesViewProps {
     isLoaded: boolean
-    launches?: Launch[]
+    launches?: OrderedLaunches[]
     onSearchFiltering: (filter: string) => void
 }
 interface LaunchesViewState {}
@@ -31,10 +31,30 @@ export default class LaunchesView extends React.Component<LaunchesViewProps, Lau
                             <span className="elem"></span>
                         </div>
                         : <div>
+                            {/* {
+                                this.props.launches?.map((launchGroup, i) => (
+                                    <div key={i}>
+                                        <div className="month-name">{monthIndexToMonthName(i, true)}</div>
+                                        {
+                                            launchGroup.map((launch, i) => (
+                                                <LaunchItem key={i} launch={launch} />
+                                            ))
+                                        }
+                                    </div>
+                                ))
+                            } */}
                             {
-                                this.props.launches?.map((launch, i) => {
-                                    return <LaunchItem key={i} launch={launch} />
-                                })
+                                
+                                this.props.launches?.map((launchGroup, i) => (
+                                    <div key={i}>
+                                        <div className="month-name">{launchGroup.month}</div>
+                                        {
+                                            launchGroup.launches.map((launch, i) => (
+                                                <LaunchItem key={i} launch={launch} />
+                                            ))
+                                        }
+                                    </div>
+                                ))
                             }
                         </div>
                 }

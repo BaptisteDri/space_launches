@@ -3,8 +3,9 @@
     width: calc(100% - 20px);
     max-width: 800px;
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
 }
 
 .search-container button {
@@ -19,6 +20,8 @@
     outline: none;
     font-size: 0.9em;
     transition: 0.3s;
+    color: #FFFFFE;
+    margin: 0 5px;
 }
 .search-container button svg {
     height: 10px;
@@ -36,7 +39,7 @@
     height: 40px;
     color: #FFFFFE;
     display: flex;
-    width: calc(100% - 130px);
+    width: calc(100% - 40px);
 }
 
 .search-input {
@@ -67,16 +70,12 @@
     color: #FFFFFE;
 }
 
+.filters-container {
+    margin-top: 20px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+}
+
 @media only screen and (max-width: 730px) {
-    .search-container {
-        flex-direction: column;
-        align-items: center;
-    }
-    .search-container button {
-        margin-top: 20px;
-        height: 40px;
-    }
-    .search-input-container {
-        width: calc(100% - 40px);
-    }
 }

@@ -1,6 +1,11 @@
 import { Rocket } from './rocket'
 import { Location } from './location'
 
+export interface OrderedLaunches {
+    month: string,
+    launches: Launch[]
+}
+
 export interface Launch {
     name: string
     net: string // date

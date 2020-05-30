@@ -2,47 +2,49 @@ import React from 'react'
 
 import LaunchesView from './launchesView/LaunchesView'
 
-import { Launch } from '../../types/launch'
+import { OrderedLaunches, Launch } from '../../types/launch'
+
+import { groupLaunchesByMonth } from '../util/groupLaunchesByMonth.js'
 
 interface LaunchesProps {}
 interface LaunchesState {
     isLoaded: boolean
-    launches?: Launch[]
-    displayedLaunches?: Launch[]
+    displayedLaunches?: OrderedLaunches[]
 }
 
+let launches: any
+
 export default class Launches extends React.Component<LaunchesProps, LaunchesState> {
+    
     constructor(props: LaunchesProps) {
         super(props)
 
         this.state = {
-            isLoaded: false,
-            launches: undefined,
-            displayedLaunches: []
+            isLoaded: false
         }
 
         this.handleSearchFiltering = this.handleSearchFiltering.bind(this)
     }
+    
     componentDidMount() {
-        fetch('https://launchlibrary.net/1.4/launch?next=60&mode=verbose')
+        fetch('https://launchlibrary.net/1.4/launch?next=100&mode=verbose')
         .then(res => res.json())
         .then(result => {
-            
+            const orderedLaunches = groupLaunchesByMonth(result.launches)
+            console.log(result.launches)
+            launches = result.launches
             this.setState({
                 isLoaded: true,
-                launches: result.launches,
-                displayedLaunches: result.launches
-            }, () => console.log(this.state.launches))
+                displayedLaunches: orderedLaunches
+            }, () => console.log(orderedLaunches))
         }, error => {
             console.error('something went wrong while fetching data')
-
         })
     }
 
     handleSearchFiltering(filter: string) {
         filter = filter.toUpperCase()
-        const launches = this.state.launches
-        const displayedLaunches = launches?.filter(launch => {
+        let displayedLaunches = launches?.filter((launch: Launch) => {
             if (launch.name.toUpperCase().includes(filter)) {
                 return true
             } else if(launch.rocket.name.toUpperCase().includes(filter)) {
@@ -55,6 +57,7 @@ export default class Launches extends React.Component<LaunchesProps, LaunchesSta
                 return false
             }
         })
+        displayedLaunches = groupLaunchesByMonth(displayedLaunches)
         this.setState({ displayedLaunches })
     }
 
