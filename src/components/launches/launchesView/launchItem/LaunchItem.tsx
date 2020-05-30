@@ -36,7 +36,7 @@ export default class LaunchItem extends React.Component<LaunchItemProps, LaunchI
                                 month: 'long'
                             })}
                             &nbsp;-&nbsp;
-                            {(new Date(this.props.launch.netstamp * 1000).toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'}))}<span>&nbsp; GMT+2:00</span> 
+                            {(new Date(this.props.launch.netstamp * 1000).toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'}))}<span>&nbsp; UTC+1</span> 
                         </span>
                     </p>
                     {
