@@ -4,7 +4,7 @@ import LaunchesView from './launchesView/LaunchesView'
 
 import { OrderedLaunches, Launch } from '../../types/launch'
 
-import { groupLaunchesByMonth } from '../util/groupLaunchesByMonth.js'
+import { groupLaunchesByMonth } from '../util/groupLaunchesByMonth'
 
 interface LaunchesProps {}
 interface LaunchesState {

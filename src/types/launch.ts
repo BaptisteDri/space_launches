@@ -2,7 +2,7 @@ import { Rocket } from './rocket'
 import { Location } from './location'
 
 export interface OrderedLaunches {
-    month: string,
+    month: string
     launches: Launch[]
 }
 
