@@ -2,7 +2,7 @@ import React from 'react'
 import './agencyItem.css'
 
 import { Agency } from '../../../../types/agency'
-// import { Link } from 'react-router-dom'
+import UrlToCta from '../../../urlToCta/UrlToCta'
 
 interface AgencyItemProps {
     agency: Agency
@@ -25,6 +25,23 @@ export default class AgencyItem extends React.Component<AgencyItemProps, AgencyI
                 </div>
                 <div className="agency-info">
                     <h2>{agency.name.replace(/ *\([^)]*\) */g, "")}</h2>
+                    <p>Links</p>
+                    <div className="links-container">
+                        {
+                            agency.infoURLs && typeof agency.infoURLs === 'object' && agency.infoURLs.length > 0 && agency.infoURLs.map((url: string, i: number) => <UrlToCta url={url} key={i} />)
+                        }
+                        {
+                            ((agency.infoURL && agency.infoURLs.length === 0) || (agency.infoURL && !agency.infoURLs)) && <UrlToCta url={agency.infoURL} />
+                        }
+                        {
+                            agency.wikiURL && <UrlToCta url={agency.wikiURL} />
+                        }
+                    </div>
+                    {/* 
+                        wikipedia
+                        twitter
+                        youtube
+                    */}
                 </div>
             </div>
         </div>

@@ -1,0 +1,37 @@
+a.ext-cta {
+    color: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    padding: 0 10px;
+    margin: 0;
+    text-decoration: none;
+    background: #16161a;
+    text-transform: capitalize;
+    height: 40px;
+}
+
+a.ext-cta.youtube {
+    background: #ff0000;
+}
+a.ext-cta.twitter {
+    background: #1da1f2;
+}
+a.ext-cta.wikipedia {
+    background: #ffffff;
+    color: #000;
+}
+a.ext-cta.facebook {
+    background: #3b5998;
+}
+a.ext-cta.instagram {
+    background: #ffdc80;
+    color: #000;
+}
+a.ext-cta.linkedin {
+    background: #0077b5;
+}
+a.ext-cta.flickr {
+    background: #ff0084;
+}

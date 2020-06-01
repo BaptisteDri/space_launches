@@ -1,4 +1,4 @@
-const countries = require ('../../iso3ToCountryNames.json')
+const countries = require ('../iso3ToCountryNames.json')
 
 export function groupAgenciesByCountries(agencies) {
     let tempOrderedAgencies = agencies.reduce((prevValue, currentValue) => {

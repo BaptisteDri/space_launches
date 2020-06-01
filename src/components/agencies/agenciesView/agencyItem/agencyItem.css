@@ -48,14 +48,23 @@
 .agency-info .date span {
     font-size: 0.8em;
 }
-.agency-info a {
+.agency-info .links-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 7px;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 5px;
+    overflow: hidden;
+}
+/* .agency-info a {
     color: #7f5af0;
     font-size: 0.8em;
     margin-top: 7px;
     display: block;
     text-decoration: none;
     width: fit-content;
-}
+} */
 
 
 @media only screen and (min-width: 800px) {

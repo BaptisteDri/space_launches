@@ -4,7 +4,7 @@ import LaunchesView from './launchesView/LaunchesView'
 
 import { OrderedLaunches, Launch } from '../../types/launch'
 
-import { groupLaunchesByMonth } from '../util/groupLaunchesByMonth'
+import { groupLaunchesByMonth } from '../../util/groupLaunchesByMonth'
 
 interface LaunchesProps {}
 interface LaunchesState {
@@ -27,16 +27,15 @@ export default class Launches extends React.Component<LaunchesProps, LaunchesSta
     }
     
     componentDidMount() {
-        fetch('https://launchlibrary.net/1.4/launch?next=100&mode=verbose')
+        fetch('https://launchlibrary.net/1.4/launch?next=5&mode=verbose')
         .then(res => res.json())
         .then(result => {
             const orderedLaunches = groupLaunchesByMonth(result.launches)
-            console.log(result.launches)
             launches = result.launches
             this.setState({
                 isLoaded: true,
                 displayedLaunches: orderedLaunches
-            }, () => console.log(orderedLaunches))
+            })
         }, error => {
             console.error('something went wrong while fetching data')
         })

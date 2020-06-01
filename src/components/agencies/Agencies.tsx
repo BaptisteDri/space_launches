@@ -3,7 +3,7 @@ import React from 'react'
 import AgenciesView from './agenciesView/AgenciesView'
 import { OrderedAgencies } from '../../types/agency'
 
-import { groupAgenciesByCountries } from '../util/groupAgenciesByCountires'
+import { groupAgenciesByCountries } from '../../util/groupAgenciesByCountires'
 
 interface AgenciesViewProps {}
 interface AgenciesViewState {
