@@ -27,7 +27,7 @@ export default class Launches extends React.Component<LaunchesProps, LaunchesSta
     }
     
     componentDidMount() {
-        fetch('https://launchlibrary.net/1.4/launch?next=5&mode=verbose')
+        fetch('https://launchlibrary.net/1.4/launch?next=100&mode=verbose')
         .then(res => res.json())
         .then(result => {
             const orderedLaunches = groupLaunchesByMonth(result.launches)
