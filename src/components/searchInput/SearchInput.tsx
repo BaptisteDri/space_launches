@@ -74,10 +74,10 @@ export default class searchInput extends React.Component<searchInputProps, searc
                     </svg>
                 </button>
                 <button onClick={() => this.setState({ filterValue: 'Ariane' }, () => this.props.onSearchFiltering('ariane'))}>
-                    Ariane
+                    <img src={process.env.PUBLIC_URL + '/ariane_group.png'} alt="Ariane Group logo png" />
                 </button>
                 <button onClick={() => this.setState({ filterValue: 'Soyuz' }, () => this.props.onSearchFiltering('soyuz'))}>
-                    Soyuz
+                    <img src={process.env.PUBLIC_URL + '/soyuz.png'} alt="Soyuz logo png" className="soyuz" />
                 </button>
             </div>
         </div>

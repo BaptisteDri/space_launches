@@ -26,6 +26,12 @@
 .search-container button svg {
     height: 10px;
 }
+.search-container button img {
+    height: 10px;
+}
+.search-container button img.soyuz {
+    height: 15px;
+}
 .search-container button:hover {
     box-shadow: none;
     background: #242629;
