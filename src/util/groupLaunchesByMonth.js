@@ -4,8 +4,6 @@ export function groupLaunchesByMonth(launches) {
     let tempOrderedLaunches = launches.reduce((prevValue, currentValue) => {
         if (currentValue.netstamp < Math.floor(Date.now() / 1000) && currentValue.net) {
             currentValue.netstamp = Math.floor(new Date(currentValue.net) / 1000)
-        } else {
-            currentValue.netstamp = Math.floor(Date.now() / 1000)
         }
         prevValue[monthIndexToMonthName(currentValue.netstamp, true)] = [...prevValue[monthIndexToMonthName(currentValue.netstamp, true)] || [], currentValue]
         return prevValue
