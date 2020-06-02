@@ -4,6 +4,7 @@ import './App.css'
 import NavBar from './components/navBar/NavBar'
 import Launches from './components/launches/Launches'
 import Agencies from './components/agencies/Agencies'
+import Rockets from './components/rockets/Rockets'
 
 interface AppProps {
     route: 'launches' | 'rockets' | 'agencies'
@@ -18,7 +19,7 @@ const App: React.FC<AppProps> = ({route}: AppProps) => {
             }
             {
                 route === 'rockets' &&
-                <h1>En cours de développement</h1>
+                <Rockets />
             }
             {
                 route === 'agencies' &&

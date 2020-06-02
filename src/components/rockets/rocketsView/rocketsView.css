@@ -1,0 +1,19 @@
+#rockets {
+    height: 100%;
+}
+
+.fake-header {
+    height: 100px;
+    background-color: #242629;
+}
+
+#rockets div.rockets-list {
+    padding: 0 10px;
+    padding-top: 25px;
+    min-height: calc(100% - 300px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 95px;
+}
