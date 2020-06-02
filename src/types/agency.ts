@@ -5,7 +5,7 @@ export interface OrderedAgencies {
 
 export interface Agency {
     abbrev: string // Abbreviation de l'agence
-    countryCode: string
+    countryCode: any // string or string[]
     infoURL: string
     infoURLs: string[]
     name: string

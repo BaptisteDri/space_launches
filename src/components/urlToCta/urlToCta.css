@@ -4,12 +4,22 @@ a.ext-cta {
     justify-content: center;
     align-items: center;
     width: fit-content;
-    padding: 0 10px;
     margin: 0;
     text-decoration: none;
     background: #16161a;
     text-transform: capitalize;
-    height: 40px;
+    height: 30px;
+    width: 30px;
+    border-radius: 20px;
+    margin-right: 10px;
+    transition: 0.3s;
+}
+a.ext-cta:hover {
+    transition: 0.3s;
+    transform: scale(1.2);
+}
+a.ext-cta svg {
+    height: 13px;
 }
 
 a.ext-cta.youtube {
@@ -26,8 +36,12 @@ a.ext-cta.facebook {
     background: #3b5998;
 }
 a.ext-cta.instagram {
-    background: #ffdc80;
-    color: #000;
+    background: #f09433; 
+background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+
 }
 a.ext-cta.linkedin {
     background: #0077b5;

@@ -26,14 +26,10 @@ export default class Agencies extends React.Component<AgenciesViewProps, Agencie
         .then(res => res.json())
         .then(result => {
             const orderedAgencies = groupAgenciesByCountries(result.agencies)
-            console.log('ORDERED : ', orderedAgencies)
-            // const orderedLaunches = groupLaunchesByMonth(result.launches)
-            // console.log(result.launches)
-            // launches = result.launches
             this.setState({
                 isLoaded: true,
                 displayedAgencies: orderedAgencies
-            }, () => console.log(this.state.displayedAgencies))
+            })
         }, error => {
             console.error('something went wrong while fetching data')
         })

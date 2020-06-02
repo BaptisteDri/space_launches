@@ -31,18 +31,6 @@ export default class LaunchesView extends React.Component<LaunchesViewProps, Lau
                             <span className="elem"></span>
                         </div>
                         : <div>
-                            {/* {
-                                this.props.launches?.map((launchGroup, i) => (
-                                    <div key={i}>
-                                        <div className="month-name">{monthIndexToMonthName(i, true)}</div>
-                                        {
-                                            launchGroup.map((launch, i) => (
-                                                <LaunchItem key={i} launch={launch} />
-                                            ))
-                                        }
-                                    </div>
-                                ))
-                            } */}
                             {
                                 
                                 this.props.launches?.map((launchGroup, i) => (
