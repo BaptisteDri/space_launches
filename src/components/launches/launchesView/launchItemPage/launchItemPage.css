@@ -1,0 +1,120 @@
+#launch-item-page-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #242629;
+    overflow: hidden;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow-y: auto;
+    background-color: #16161a;
+}
+#launch-item-page-container .card-header {
+    height: 300px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 10px;
+}
+#launch-item-page-container .card-header button {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    height: 40px;
+    position: fixed;
+}
+#launch-item-page-container .card-header svg {
+    height: 25px;
+    color: #FFFFFE;
+}
+
+#launch-item-page-container .card-content {
+    background-color: #242629;
+    padding: 0 0 50px 0;
+    margin-bottom: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-content > * {
+    max-width: 900px;
+}
+.card-content section {
+    margin-top: 50px;
+}
+#launch-item-page-container .card-content h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin: 50px 0;
+}
+#launch-item-page-container .card-content h2 {
+    font-size: 2.2em;
+    font-weight: 700;
+    color: #FFFFFE;
+    text-align: center;
+    margin: 0 0 20px 0;
+}
+#launch-item-page-container .card-content h3 {
+    color: #FFFFFE;
+    font-size: 1.7em;
+    margin-bottom: 10px;
+}
+
+#launch-item-page-container .card-content .countdown {
+    display: flex;
+    /* margin-bottom: 50px; */
+}
+#launch-item-page-container .card-content .countdown div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card-content .countdown div span:first-of-type,
+.card-content .countdown div.separator{
+    font-size: 35px;
+    color: #FFFFFE;
+}
+div.separator {
+    margin: 0 13px;
+}
+.countdown div span:last-of-type{
+    font-size: 12px;
+}
+.countdown div span {
+    color: #7f5af0;
+}
+#launch-item-page-container section > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#launch-item-page-container section p {
+    font-size: 1.2em;
+}
+#launch-item-page-container section p.date {
+    text-transform: capitalize;
+    color: #FFFFFE;
+}
+#launch-item-page-container section > div.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 20px;
+    flex-wrap: nowrap;
+}
+div.row div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}

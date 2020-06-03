@@ -3,18 +3,35 @@ import './launchItem.css'
 
 import { Launch } from '../../../../types/launch'
 import { Link } from 'react-router-dom'
+import LaunchItemPage from '../launchItemPage/LaunchItemPage'
 
 const countries = require('../../../../iso3ToCountryNames.json')
 
 interface LaunchItemProps {
     launch: Launch
 }
-interface LaunchItemState { }
+interface LaunchItemState {
+    isMoreInfoPageDisplayed: boolean
+}
 
 export default class LaunchItem extends React.Component<LaunchItemProps, LaunchItemState> {
+    constructor(props: LaunchItemProps) {
+        super(props)
+
+        this.state = {
+            isMoreInfoPageDisplayed: false
+        }
+
+        this.onCloseMoreInfoPage = this.onCloseMoreInfoPage.bind(this)
+    }
+
+    onCloseMoreInfoPage() {
+        this.setState({ isMoreInfoPageDisplayed: false })
+    }
+
     render() {
         const { launch } = this.props
-        return <div className="launch-item-container">
+        return <div className="launch-item-container" onClick={e => this.setState({isMoreInfoPageDisplayed: true})}>
             <div className="launch-item">
                 <div
                     className="image-container"
@@ -53,6 +70,11 @@ export default class LaunchItem extends React.Component<LaunchItemProps, LaunchI
                     </Link>
                 </div>
             </div>
+
+            {
+                this.state.isMoreInfoPageDisplayed && <LaunchItemPage launch={launch} onCloseMoreInfoPage={this.onCloseMoreInfoPage} />
+            }
+
         </div>
     }
 }

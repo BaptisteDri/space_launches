@@ -31,8 +31,7 @@ export default class LaunchesView extends React.Component<LaunchesViewProps, Lau
                             <span className="elem"></span>
                         </div>
                         : <div>
-                            {
-                                
+                            {   
                                 this.props.launches?.map((launchGroup, i) => (
                                     <div key={i}>
                                         <div className="month-name">{launchGroup.month}</div>
@@ -44,6 +43,18 @@ export default class LaunchesView extends React.Component<LaunchesViewProps, Lau
                                     </div>
                                 ))
                             }
+                            {/* {   
+                                this.props.launches?.map((launchGroup, i) => (
+                                    i === 0 &&        <div key={i}>
+                                    <div className="month-name">{launchGroup.month}</div>
+                                    {
+                                        launchGroup.launches.map((launch, i) => (
+                                        i === 0 && <LaunchItem key={i} launch={launch} />
+                                        ))
+                                    }
+                                </div>
+                                ))
+                            } */}
                         </div>
                 }
             </div>

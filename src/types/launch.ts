@@ -1,5 +1,6 @@
 import { Rocket } from './rocket'
 import { Location } from './location'
+import { Mission } from './mission'
 
 export interface OrderedLaunches {
     month: string
@@ -15,4 +16,5 @@ export interface Launch {
     probability: number
     rocket: Rocket
     location: Location
+    missions: Mission[]
 }
