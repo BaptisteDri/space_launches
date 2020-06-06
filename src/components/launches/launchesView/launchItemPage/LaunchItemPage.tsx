@@ -2,6 +2,10 @@ import React from 'react'
 import './launchItemPage.css'
 
 import { Launch } from '../../../../types/launch'
+import UrlToCta from '../../../urlToCta/UrlToCta'
+
+import { findFlagUrlByIso3Code } from "country-flags-svg"
+
 
 export interface LaunchItemPageProps {
     launch: Launch
@@ -20,6 +24,8 @@ interface CountDown {
 }
 
 export default class LaunchItemPage extends React.Component<LaunchItemPageProps, LaunchItemPageState> {
+    countries = require('../../../../iso3ToCountryNames.json')
+
     constructor(props: LaunchItemPageProps) {
         super(props)
 
@@ -43,7 +49,12 @@ export default class LaunchItemPage extends React.Component<LaunchItemPageProps,
         }
     }
 
+    componentWillUnmount() {
+        this.closePage()
+    }
+
     componentDidMount() {
+        console.log(this.props.launch)
         setInterval(() => {
             if (this.state.countDownTimestamp > 0) {
                 this.setState(prevState => ({
@@ -65,8 +76,8 @@ export default class LaunchItemPage extends React.Component<LaunchItemPageProps,
         }, 1000)
     }
 
-    closePage(e: any) {
-        e.stopPropagation()
+    closePage(e?: any) {
+        e && e.stopPropagation()
         this.props.onCloseMoreInfoPage()
     }
 
@@ -74,6 +85,7 @@ export default class LaunchItemPage extends React.Component<LaunchItemPageProps,
         const { launch } = this.props
         return <div
             id="launch-item-page-container"
+            className={launch.rocket.imageURL !== 'https://launchlibrary1.nyc3.digitaloceanspaces.com/RocketImages/placeholder_1920.png' && typeof launch.rocket.imageURL === 'string' && launch.rocket.imageURL.includes('://') ? '' : 'no-bg'}
             style={
                 (launch.rocket.imageURL !== 'https://launchlibrary1.nyc3.digitaloceanspaces.com/RocketImages/placeholder_1920.png' && typeof launch.rocket.imageURL === 'string' && launch.rocket.imageURL.includes('://'))
                     ? { backgroundImage: `url(${launch.rocket.imageURL})` }
@@ -119,40 +131,20 @@ export default class LaunchItemPage extends React.Component<LaunchItemPageProps,
 
                 <section>
                     <h2>Horaires</h2>
-                    <div>
-                        <h3>Départ</h3>
-                        <p className="date">
-                            {
-                                new Date(this.props.launch.netstamp * 1000).toLocaleString('fr-FR', {
-                                    hour12: false,
-                                    weekday: 'long',
-                                    day: 'numeric',
-                                    month: 'long'
-                                })}
-                                &nbsp;-&nbsp;
-                                {
-                                (
-                                    new Date(this.props.launch.netstamp * 1000).toLocaleTimeString('fr-FR', {
-                                        hour: '2-digit',
-                                        minute: '2-digit'
-                                    })
-                                )
-                            }
-                            <span>&nbsp; UTC+1</span>
-                        </p>
-                    </div>
                     <div className="row">
-                        <div>
-                            <h3>Fenêtre de lancement</h3>
-                            <p className="date">
+                        <div className="date">
+                            <h3>Début de la fenêtre de lancement</h3>
+                            <span className="day">
                                 {
                                     new Date(this.props.launch.windowstart).toLocaleString('fr-FR', {
                                         hour12: false,
                                         weekday: 'long',
                                         day: 'numeric',
                                         month: 'long'
-                                    })}
-                                &nbsp;-&nbsp;
+                                    })
+                                }
+                            </span>
+                            <span className="hours">
                                 {
                                     (
                                         new Date(this.props.launch.windowstart).toLocaleTimeString('fr-FR', {
@@ -161,16 +153,46 @@ export default class LaunchItemPage extends React.Component<LaunchItemPageProps,
                                         })
                                     )
                                 }
-                                <span>&nbsp; UTC+1</span>
-                                &nbsp;&nbsp;&nbsp;&nbsp;à&nbsp;&nbsp;&nbsp;&nbsp;
+                            </span>
+                            <span className="utc">UTC+1</span>
+                        </div>
+                        <div className="date">
+                            <h3>Horaire initial de lancement</h3>
+                            <span className="day">
+                                {
+                                    new Date(this.props.launch.netstamp * 1000).toLocaleString('fr-FR', {
+                                        hour12: false,
+                                        weekday: 'long',
+                                        day: 'numeric',
+                                        month: 'long'
+                                    })
+                                }
+                            </span>
+                            <span className="hours">
+                                {
+                                    (
+                                        new Date(this.props.launch.netstamp * 1000).toLocaleTimeString('fr-FR', {
+                                            hour: '2-digit',
+                                            minute: '2-digit'
+                                        })
+                                    )
+                                }
+                            </span>
+                            <span className="utc">UTC+1</span>
+                        </div>
+                        <div className="date">
+                            <h3>Fin de la fenêtre de lancement</h3>
+                            <span className="day">
                                 {
                                     new Date(this.props.launch.windowend).toLocaleString('fr-FR', {
                                         hour12: false,
                                         weekday: 'long',
                                         day: 'numeric',
                                         month: 'long'
-                                    })}
-                                &nbsp;-&nbsp;
+                                    })
+                                }
+                            </span>
+                            <span className="hours">
                                 {
                                     (
                                         new Date(this.props.launch.windowend).toLocaleTimeString('fr-FR', {
@@ -179,47 +201,107 @@ export default class LaunchItemPage extends React.Component<LaunchItemPageProps,
                                         })
                                     )
                                 }
-                                <span>&nbsp; UTC+1</span>
-                            </p>
+                            </span>
+                            <span className="utc">UTC+1</span>
                         </div>
                     </div>
                 </section>
+            </div>
+            <div className="card-content">
                 {
                     launch.missions[0] &&
                     <section>
                         <h2>Mission</h2>
-                        <p>{launch.missions[0].description}</p>
-                        <p>{launch.missions[0].name}</p>
-                        <p>{launch.missions[0].typeName}</p>
-                        <p>{launch.missions[0].wikiURL}</p>
+                        <div className="row">
+                            {
+                                launch.missions.map((mission, i) => (
+                                    <div key={i} className="section-container">
+                                        <p className="mission-name">{mission.name}</p>
+                                        <p className="mission-type">{mission.typeName}</p>
+                                        <p className="mission-desc">{mission.description}</p>
+                                        {
+                                            mission.wikiURL.length > 0 &&
+                                            <p className="mission-wiki">
+                                                <UrlToCta url={mission.wikiURL} />
+                                            </p>
+                                        }
+                                    </div>
+                                ))
+                            }
+                        </div>
                     </section>
                 }
-            </div>
-            <div className="card-content">
                 <section>
                     <h2>Départ</h2>
-                    <p>countryCode</p>
-                    <p>infoUrl</p>
-                    <p>name</p>
-                </section>
-                <section>
-                    <h2>Fusée</h2>
-                    <p>InfoURL</p>
-                    <p>InfoURLs</p>
-                    <p>name</p>
-                    <p>wikiURL</p>
+                    <div className="custom-section-container">
+                        <p
+                            className="country-flag"
+                            style={{ backgroundImage: findFlagUrlByIso3Code(launch.location.countryCode) ? `url(${findFlagUrlByIso3Code(launch.location.countryCode)})` : `` }}
+                        >
+                        </p>
+                        <p className="country-name">{this.countries[launch.location.countryCode]}</p>
+                        <p className="country-location-name">{launch.location.name}</p>
+                        <div className="links">
+                            <UrlToCta url={`https://www.google.com/maps/search/${launch.location.name}`} />
+                            {
+                                (launch.location.pads && launch.location.pads[0].wikiURL.length > 0) &&
+                                <UrlToCta url={launch.location.pads[0].wikiURL} />
+                            }
+                        </div>
+                    </div>
                 </section>
             </div>
             <div className="card-content">
                 <section>
-                    <h2>Agence</h2>
-                    <p>abbrev</p>
-                    <p>countryCode</p>
-                    <p>InfoURL</p>
-                    <p>InfoURLs</p>
-                    <p>name</p>
-                    <p>WikiURL</p>
+                    <h2>Fusée</h2>
+                    <div className="custom-section-container">
+                        <p
+                            className="rocket-img"
+                            style={
+                                (launch.rocket.imageURL !== 'https://launchlibrary1.nyc3.digitaloceanspaces.com/RocketImages/placeholder_1920.png' && typeof launch.rocket.imageURL === 'string' && launch.rocket.imageURL.includes('://'))
+                                    ? { backgroundImage: `url(${launch.rocket.imageURL})` }
+                                    : { backgroundImage: `url(${process.env.PUBLIC_URL}/rocket_image_placeholder.svg)`, backgroundSize: 'contain' }
+                            }
+                        >
+                        </p>
+                        <p className="rocket-name">
+                            {launch.rocket.name}
+                        </p>
+                        <p className="rocket-agency">
+                            {launch.rocket.agencies && launch.rocket.agencies[0] && launch.rocket.agencies[0].name}
+                        </p>
+                        <div className="links">
+                            {launch.rocket.wikiURL.length > 0 && <UrlToCta url={launch.rocket.wikiURL} />}
+                            {
+                                (launch.rocket.infoURLs && launch.rocket.infoURLs.length > 0) 
+                                    ? launch.rocket.infoURLs.map((infoURL: any, i: number) => <UrlToCta key={i} url={infoURL} />) 
+                                    : launch.rocket.infoURL && <UrlToCta url={launch.rocket.infoURL} />
+                            }
+                        </div>
+                    </div>
                 </section>
+                {
+                    launch.rocket.agencies && launch.rocket.agencies[0] &&
+                    <section>
+                        <h2>Agence</h2>
+                        {
+                            launch.rocket.agencies && launch.rocket.agencies.map((agency, i) => (
+                                <div key={i} className="custom-section-container">
+                                    <p
+                                        className="country-flag"
+                                        style={{ backgroundImage: findFlagUrlByIso3Code(agency.countryCode) ? `url(${findFlagUrlByIso3Code(agency.countryCode)})` : `` }}
+                                    ></p>
+                                    <p className="country-name">{this.countries[agency.countryCode]}</p>
+                                    <p className="country-location-name">{agency.abbrev}</p>
+                                    <div className="links">
+                                        {agency.wikiURL && <UrlToCta url={agency.wikiURL} />}
+                                        {agency.infoURLs.length > 0 ? agency.infoURLs.map((infoURL: any, i: number) => <UrlToCta key={i} url={infoURL} />) : agency.infoURL.length > 0 && <UrlToCta url={agency.infoURL} />}
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </section>
+                }
             </div>
         </div>
     }

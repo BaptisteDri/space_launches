@@ -5,7 +5,7 @@ interface urlToCtaProps {
     url: string
 }
 interface urlToCtaState { 
-    urlType?: 'youtube' | 'twitter' | 'wikipedia' | 'facebook' | 'instagram' | 'linkedin' | 'flickr'
+    urlType?: 'youtube' | 'twitter' | 'wikipedia' | 'facebook' | 'instagram' | 'linkedin' | 'flickr' | 'google'
 }
 
 
@@ -35,6 +35,8 @@ export default class urlToCta extends React.Component<urlToCtaProps, urlToCtaSta
             return 'linkedin'
         } else if (url.includes('flickr')) {
             return 'flickr'
+        } else if (url.includes('google')) {
+            return 'google'
         } else {
             return undefined
         }
@@ -75,6 +77,10 @@ export default class urlToCta extends React.Component<urlToCtaProps, urlToCtaSta
             {
                 this.state.urlType === 'flickr' &&
                 <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="flickr" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM144.5 319c-35.1 0-63.5-28.4-63.5-63.5s28.4-63.5 63.5-63.5 63.5 28.4 63.5 63.5-28.4 63.5-63.5 63.5zm159 0c-35.1 0-63.5-28.4-63.5-63.5s28.4-63.5 63.5-63.5 63.5 28.4 63.5 63.5-28.4 63.5-63.5 63.5z"></path></svg>
+            }
+            {
+                this.state.urlType === 'google' &&
+                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="map-marked-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M288 0c-69.59 0-126 56.41-126 126 0 56.26 82.35 158.8 113.9 196.02 6.39 7.54 17.82 7.54 24.2 0C331.65 284.8 414 182.26 414 126 414 56.41 357.59 0 288 0zm0 168c-23.2 0-42-18.8-42-42s18.8-42 42-42 42 18.8 42 42-18.8 42-42 42zM20.12 215.95A32.006 32.006 0 0 0 0 245.66v250.32c0 11.32 11.43 19.06 21.94 14.86L160 448V214.92c-8.84-15.98-16.07-31.54-21.25-46.42L20.12 215.95zM288 359.67c-14.07 0-27.38-6.18-36.51-16.96-19.66-23.2-40.57-49.62-59.49-76.72v182l192 64V266c-18.92 27.09-39.82 53.52-59.49 76.72-9.13 10.77-22.44 16.95-36.51 16.95zm266.06-198.51L416 224v288l139.88-55.95A31.996 31.996 0 0 0 576 426.34V176.02c0-11.32-11.43-19.06-21.94-14.86z"></path></svg>
             }
             {
                 !this.state.urlType &&
