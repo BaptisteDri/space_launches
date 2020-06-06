@@ -11,10 +11,10 @@ ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>
             <Switch>
-                <Route path="/">
+                <Route exact path={process.env.PUBLIC_URL}>
                     <App route="launches" />
                 </Route>
-                <Route exact path="/lancement/:id">
+                <Route exact path={`${process.env.PUBLIC_URL}/lancement/:id`}>
                     <App route="custom_launch" />
                 </Route>
             </Switch>
