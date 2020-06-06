@@ -14,10 +14,7 @@ ReactDOM.render(
                 <Route exact path="/">
                     <App route="launches" />
                 </Route>
-                <Route exact path="/lancements">
-                    <App route="launches" />
-                </Route>
-                <Route path="/:id">
+                <Route exact path="/lancement/:id">
                     <App route="custom_launch" />
                 </Route>
             </Switch>

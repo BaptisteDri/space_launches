@@ -14,7 +14,7 @@ interface LaunchItemState {}
 export default class LaunchItem extends React.Component<LaunchItemProps, LaunchItemState> {
     render() {
         const { launch } = this.props
-        return <div className="launch-item-container" onClick={e => window.location.href = `${process.env.PUBLIC_URL}/${launch.id}`}>
+        return <div className="launch-item-container" onClick={e => window.location.href = `${process.env.PUBLIC_URL}/lancement/${launch.id}`}>
             <div className="launch-item">
                 <div
                     className="image-container"
