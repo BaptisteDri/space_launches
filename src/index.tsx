@@ -14,7 +14,7 @@ ReactDOM.render(
                 <Route exact path={process.env.PUBLIC_URL}>
                     <App route="launches" />
                 </Route>
-                <Route path={`/space_launches/:id`}>
+                <Route exact path={`/space_launches/:id`}>
                     <App route="custom_launch" />
                 </Route>
             </Switch>
