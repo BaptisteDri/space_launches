@@ -9,7 +9,7 @@ import App from './App'
 
 ReactDOM.render(
     <React.StrictMode>
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <BrowserRouter basename="space_launches">
             <Switch>
                 <Route exact path="/" render={() => <App route="launches" />} />
                 <Route exact path="/lancement/:id" render={() => <App route="custom_launch" />} />
