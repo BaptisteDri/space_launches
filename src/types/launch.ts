@@ -8,6 +8,7 @@ export interface OrderedLaunches {
 }
 
 export interface Launch {
+    id: number
     name: string
     net: string // date
     netstamp: number // date in timestamp

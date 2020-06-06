@@ -62,9 +62,9 @@ main {
     align-items: center;
     justify-content: center;
     width: 151px;
-    height: 54px;
+    height: 87px;
     font-size: 0;
-    margin: 80px auto 0 auto;
+    margin: 0 auto 0 auto;
 }
 .loader > .elem {
     display: inline-block;

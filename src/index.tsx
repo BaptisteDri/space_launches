@@ -11,17 +11,11 @@ ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>
             <Switch>
-                <Route exact path="/lancements">
+                <Route exact path="/">
                     <App route="launches" />
                 </Route>
-                <Route exact path="/fusees">
-                    <App route="rockets" />
-                </Route>
-                <Route exact path="/agences-spatiales">
-                    <App route="agencies" />
-                </Route>
-                <Route path="*">
-                    <App route="launches" />
+                <Route exact path="/lancement/:id">
+                    <App route="custom_launch" />
                 </Route>
             </Switch>
         </BrowserRouter>
