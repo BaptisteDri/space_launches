@@ -11,7 +11,7 @@ ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>
             <Switch>
-                <Route exact path={process.env.PUBLIC_URL}>
+                <Route exact path={`${process.env.PUBLIC_URL}/`}>
                     <App route="launches" />
                 </Route>
                 <Route exact path={`${process.env.PUBLIC_URL}/:id`}>
