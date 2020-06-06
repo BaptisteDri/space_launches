@@ -11,7 +11,7 @@ ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>
             <Switch>
-                <Route exact path="/">
+                <Route path="/">
                     <App route="launches" />
                 </Route>
                 <Route exact path="/lancement/:id">
