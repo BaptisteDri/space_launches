@@ -105,7 +105,7 @@ export default class LaunchItemPage extends React.Component<LaunchItemPageProps,
                                                         <span>
                                                             {this.state.countDown.hours > 9 ? this.state.countDown.hours : '0' + this.state.countDown.hours}
                                                         </span>
-                                                        <span>HEURES</span>
+                                                        <span>HEURESs</span>
                                                     </div>
                                                     <div className="separator">:</div>
                                                     <div className="minutes">
