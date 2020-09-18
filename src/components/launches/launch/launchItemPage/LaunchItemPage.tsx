@@ -78,13 +78,15 @@ export default class LaunchItemPage extends React.Component<LaunchItemPageProps,
                                 <div
                                     id="launch-item-page-container"
                                     className={this.props.launch.rocket.imageURL !== 'https://launchlibrary1.nyc3.digitaloceanspaces.com/RocketImages/placeholder_1920.png' && typeof this.props.launch.rocket.imageURL === 'string' && this.props.launch.rocket.imageURL.includes('://') ? '' : 'no-bg'}
-                                    style={
-                                        (this.props.launch.rocket.imageURL !== 'https://launchlibrary1.nyc3.digitaloceanspaces.com/RocketImages/placeholder_1920.png' && typeof this.props.launch.rocket.imageURL === 'string' && this.props.launch.rocket.imageURL.includes('://'))
-                                            ? { backgroundImage: `url(${this.props.launch.rocket.imageURL})` }
-                                            : {}
-                                    }
                                 >
-                                    <div className="card-header">
+                                    <div 
+                                        className="card-header"
+                                        style={
+                                            (this.props.launch.rocket.imageURL !== 'https://launchlibrary1.nyc3.digitaloceanspaces.com/RocketImages/placeholder_1920.png' && typeof this.props.launch.rocket.imageURL === 'string' && this.props.launch.rocket.imageURL.includes('://'))
+                                                ? { backgroundImage: `url(${this.props.launch.rocket.imageURL})` }
+                                                : { backgroundImage: `url(${process.env.PUBLIC_URL}/rocket_image_placeholder.svg)`, backgroundSize: 'contain', backgroundPosition: 'center'}
+                                        }
+                                    >
                                         <button onClick={e => window.location.href = `${process.env.PUBLIC_URL}/`}>
                                             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm121.6 313.1c4.7 4.7 4.7 12.3 0 17L338 377.6c-4.7 4.7-12.3 4.7-17 0L256 312l-65.1 65.6c-4.7 4.7-12.3 4.7-17 0L134.4 338c-4.7-4.7-4.7-12.3 0-17l65.6-65-65.6-65.1c-4.7-4.7-4.7-12.3 0-17l39.6-39.6c4.7-4.7 12.3-4.7 17 0l65 65.7 65.1-65.6c4.7-4.7 12.3-4.7 17 0l39.6 39.6c4.7 4.7 4.7 12.3 0 17L312 256l65.6 65.1z"></path></svg>
                                         </button>
@@ -133,108 +135,130 @@ export default class LaunchItemPage extends React.Component<LaunchItemPageProps,
                                                 </div>
                                         }
 
-                                        <section>
-                                            <h2>Horaires</h2>
-                                            <div className="row">
-                                                <div className="date">
-                                                    <h3>Début de la fenêtre de lancement</h3>
-                                                    <span className="day">
-                                                        {
-                                                            new Date(this.props.launch.windowstart).toLocaleString('fr-FR', {
-                                                                hour12: false,
-                                                                weekday: 'long',
-                                                                day: 'numeric',
-                                                                month: 'long'
-                                                            })
-                                                        }
-                                                    </span>
-                                                    <span className="hours">
-                                                        {
-                                                            (
-                                                                new Date(this.props.launch.windowstart).toLocaleTimeString('fr-FR', {
-                                                                    hour: '2-digit',
-                                                                    minute: '2-digit'
-                                                                })
-                                                            )
-                                                        }
-                                                    </span>
-                                                    <span className="utc">UTC+1</span>
-                                                </div>
-                                                <div className="date">
-                                                    <h3>Horaire initial de lancement</h3>
-                                                    <span className="day">
-                                                        {
-                                                            new Date(this.props.launch.netstamp * 1000).toLocaleString('fr-FR', {
-                                                                hour12: false,
-                                                                weekday: 'long',
-                                                                day: 'numeric',
-                                                                month: 'long'
-                                                            })
-                                                        }
-                                                    </span>
-                                                    <span className="hours">
-                                                        {
-                                                            (
-                                                                new Date(this.props.launch.netstamp * 1000).toLocaleTimeString('fr-FR', {
-                                                                    hour: '2-digit',
-                                                                    minute: '2-digit'
-                                                                })
-                                                            )
-                                                        }
-                                                    </span>
-                                                    <span className="utc">UTC+1</span>
-                                                </div>
-                                                <div className="date">
-                                                    <h3>Fin de la fenêtre de lancement</h3>
-                                                    <span className="day">
-                                                        {
-                                                            new Date(this.props.launch.windowend).toLocaleString('fr-FR', {
-                                                                hour12: false,
-                                                                weekday: 'long',
-                                                                day: 'numeric',
-                                                                month: 'long'
-                                                            })
-                                                        }
-                                                    </span>
-                                                    <span className="hours">
-                                                        {
-                                                            (
-                                                                new Date(this.props.launch.windowend).toLocaleTimeString('fr-FR', {
-                                                                    hour: '2-digit',
-                                                                    minute: '2-digit'
-                                                                })
-                                                            )
-                                                        }
-                                                    </span>
-                                                    <span className="utc">UTC+1</span>
-                                                </div>
-                                            </div>
-                                        </section>
-                                    </div>
-                                    <div className="card-content">
                                         {
-                                            this.props.launch.missions[0] &&
-                                            <section>
-                                                <h2>Mission</h2>
-                                                <div className="row">
-                                                    {
-                                                        this.props.launch.missions.map((mission, i) => (
-                                                            <div key={i} className="section-container">
-                                                                <p className="mission-name">{mission.name}</p>
-                                                                <p className="mission-type">{mission.typeName}</p>
-                                                                <p className="mission-desc">{mission.description}</p>
+                                                ((
+                                                    new Date(this.props.launch.windowstart).toLocaleTimeString('fr-FR', {
+                                                        hour: '2-digit',
+                                                        minute: '2-digit'
+                                                    })
+                                                !==
+                                                (
+                                                    new Date(this.props.launch.windowend).toLocaleTimeString('fr-FR', {
+                                                        hour: '2-digit',
+                                                        minute: '2-digit'
+                                                    })
+                                                ))
+                                                &&
+                                                <section className="schedule">
+                                                    <h2>Fenêtre de lancement</h2>
+                                                    <div className="schedules">
+                                                        <div>
+                                                            <span className="label">Début</span>
+                                                            <span className="info">
                                                                 {
-                                                                    mission.wikiURL.length > 0 &&
-                                                                    <p className="mission-wiki">
-                                                                        <UrlToCta url={mission.wikiURL} />
-                                                                    </p>
+                                                                    (
+                                                                        new Date(this.props.launch.windowstart).toLocaleTimeString('fr-FR', {
+                                                                            hour: '2-digit',
+                                                                            minute: '2-digit'
+                                                                        })
+                                                                    )
                                                                 }
-                                                            </div>
-                                                        ))
+                                                            </span>
+                                                            <span className="timezone">UTC+1</span>
+                                                        </div>
+                                                        <div>
+                                                            <span className="label">Lancement</span>
+                                                            <span className="info">
+                                                                {
+                                                                    (
+                                                                        new Date(this.props.launch.netstamp * 1000).toLocaleTimeString('fr-FR', {
+                                                                            hour: '2-digit',
+                                                                            minute: '2-digit'
+                                                                        })
+                                                                    )
+                                                                }
+                                                            </span>
+                                                            <span className="timezone">UTC+1</span>
+                                                        </div>
+                                                        <div>
+                                                            <span className="label">Fin</span>
+                                                            <span className="info">
+                                                                {
+                                                                    (
+                                                                        new Date(this.props.launch.windowend).toLocaleTimeString('fr-FR', {
+                                                                            hour: '2-digit',
+                                                                            minute: '2-digit'
+                                                                        })
+                                                                    )
+                                                                }
+                                                            </span>
+                                                            <span className="timezone">UTC+1</span>
+                                                        </div>
+                                                    </div>
+                                                </section>       
+                                            )
+                                        }
+
+                                        {
+                                            this.props.launch.rocket.agencies && this.props.launch.rocket.agencies[0] &&
+                                            <section className="agency">
+                                                <h2>
+                                                    {
+                                                        this.props.launch.rocket.agencies.length > 1
+                                                        ? 'Agences'
+                                                        : 'Agence'
                                                     }
-                                                </div>
+                                                </h2>
+                                                {
+                                                    this.props.launch.rocket.agencies && this.props.launch.rocket.agencies.map((agency, i) => (
+                                                        <div key={i} className="agency-item">
+                                                            <p
+                                                                className="country-flag"
+                                                                style={{ backgroundImage: findFlagUrlByIso3Code(agency.countryCode) ? `url(${findFlagUrlByIso3Code(agency.countryCode)})` : `` }}
+                                                            ></p>
+                                                            <p className="agency-name">{agency.name}</p>
+                                                            <p className="country-name">{this.countries[agency.countryCode]}</p>
+                                                            <div className="links">
+                                                                {agency.wikiURL && <UrlToCta url={agency.wikiURL} />}
+                                                                {agency.infoURLs.length > 0 ? agency.infoURLs.map((infoURL: any, i: number) => <UrlToCta key={i} url={infoURL} />) : agency.infoURL.length > 0 && <UrlToCta url={agency.infoURL} />}
+                                                            </div>
+                                                        </div>
+                                                    ))
+                                                }
                                             </section>
                                         }
+
+                                        {
+                                            this.props.launch && this.props.launch.missions && this.props.launch.missions[0] &&
+                                            <section className="mission">
+                                                <h2>
+                                                    {
+                                                        this.props.launch.missions.length > 1
+                                                        ? 'Missions'
+                                                        : 'Mission'
+                                                    }
+                                                </h2>
+                                                {
+                                                    this.props.launch.missions.map((mission, i) => (
+                                                        <article key={i} className="mission-item">
+                                                            <h3>{mission.name}</h3>
+                                                            <span>{mission.typeName}</span>
+                                                            <p className="desc">{mission.description}</p>
+                                                            {
+                                                                mission.wikiURL.length > 0 &&
+                                                                <p className="mission-wiki">
+                                                                    <UrlToCta url={mission.wikiURL} />
+                                                                </p>
+                                                            }
+                                                        </article>
+                                                    ))
+                                                }
+                                            </section>
+                                        }
+                                        
+
+                                    </div>
+                                    <div className="card-content">
                                         <section>
                                             <h2>Départ</h2>
                                             <div className="custom-section-container">
@@ -248,7 +272,7 @@ export default class LaunchItemPage extends React.Component<LaunchItemPageProps,
                                                 <div className="links">
                                                     <UrlToCta url={`https://www.google.com/maps/search/${this.props.launch.location.name}`} />
                                                     {
-                                                        (this.props.launch.location.pads && this.props.launch.location.pads[0].wikiURL.length > 0) &&
+                                                        (this.props.launch.location.pads && this.props.launch.location.pads[0] && this.props.launch.location.pads[0].wikiURL && this.props.launch.location.pads[0].wikiURL.length > 0) &&
                                                         <UrlToCta url={this.props.launch.location.pads[0].wikiURL} />
                                                     }
                                                 </div>

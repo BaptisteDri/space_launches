@@ -1,45 +1,54 @@
 #launches div.launch-item {
-    border-radius: 65px;
+    border-radius: 25px;
     margin-left: auto;
     margin-right: auto;
-    height: 100px;
+    height: 450px;
     min-height: fit-content;
     width: stretch;
     max-width: 900px;
-    padding: 15px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     overflow: hidden;
     margin-bottom: 30px;
-    background: linear-gradient(225deg, #202225, #27292c);
-    box-shadow:  -5px 5px 6px #1e2022, 5px -5px 6px #2a2c30;
+    background-color: rgb(44, 44, 46);
     cursor: pointer;
     transition: 0.3s;
 }
 #launches div.launch-item:hover {
     transition: 0.3s;
-    transform: scale(1.1);
+    transform: scale(1.085);
 }
-.image-container {
-    height: 100%;
-    width: 100px;
-    border-radius: 50px;
-    overflow: hidden;
+.launch-img {
     background-position: top;
-    background-size: cover;
     background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 360px;
 }
 .launch-info {
-    padding-left: 10px;
-    width: calc(100% - 110px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90px;
+    background-color: rgb(44, 44, 46);
+    box-shadow: 0px -8px 20px -1px rgba(0,0,0,0.2);
+    overflow: hidden;
 }
 .launch-info h2 {
+    text-align: center;
     font-weight: 700;
+    margin-bottom: 8px;
+    font-size: 1.3em;
     color: #FFFFFE;
+    width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .launch-info p {
     font-size: 0.8em;
-    margin-top: 15px;
+    margin-bottom: 5px;
 }
 .launch-info .date {
     text-transform: capitalize;
@@ -51,17 +60,6 @@
 .launch-info a {
     color: #7f5af0;
     font-size: 0.8em;
-    margin-top: 7px;
-    display: block;
     text-decoration: none;
     width: fit-content;
-}
-
-
-@media only screen and (min-width: 800px) {
-    .launch-info a {
-        display: inline-block;
-        margin-right: 20px;
-        margin-top: 15px;
-    }
 }

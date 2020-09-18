@@ -4,20 +4,19 @@
 
 .fake-header {
     height: 100px;
-    background-color: #242629;
 }
 
 .month-name {
     text-align: center;
-    margin: 20px 0 15px 0;
+    margin: 30px 0 25px 0;
     color: #FFFFFE;
     font-weight: 700;
     text-transform: capitalize;
-    font-size: 1.3em;
+    font-size: 1.8em;
 }
 
 #launches div.launches-list {
-    padding: 0 10px;
+    padding: 0 20px;
     padding-top: 25px;
     min-height: calc(100% - 300px);
     overflow-y: auto;

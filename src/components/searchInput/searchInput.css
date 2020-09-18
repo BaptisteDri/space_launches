@@ -12,9 +12,7 @@
     width: 110px;
     text-align: center;
     cursor: pointer;
-    background: #242629;
-    background: linear-gradient(225deg, #202225, #27292c);
-    box-shadow:  -5px 5px 10px #1b1d1f, 5px -5px 10px #2d2f33;
+    background-color: rgb(44, 44, 46);
     border: none;
     border-radius: 20px;
     outline: none;
@@ -36,11 +34,11 @@
     box-shadow: none;
     background: #242629;
     transition: 0.3s;
+    transform: scale(1.1);
 }
 
 .search-input-container {
-    background: #242629;
-    box-shadow: inset -5px 5px 6px #1e2022, inset 5px -5px 6px #2a2c30;
+    background-color: rgb(44, 44, 46);
     border-radius: 20px;
     height: 40px;
     color: #FFFFFE;
