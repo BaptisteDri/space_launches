@@ -27,6 +27,10 @@
     color: #FFF;
 }
 
+.card-content {
+    padding-bottom: 20px;
+}
+
 .card-content h1 {
     width: 100%;
     margin-top: 15px;
