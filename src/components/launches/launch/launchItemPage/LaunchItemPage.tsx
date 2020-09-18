@@ -4,9 +4,6 @@ import './launchItemPage.css'
 import { Launch } from '../../../../types/launch'
 import UrlToCta from '../../../urlToCta/UrlToCta'
 
-import { findFlagUrlByIso3Code } from "country-flags-svg"
-
-
 export interface LaunchItemPageProps {
     launch?: Launch
     isLoaded: boolean
@@ -212,10 +209,6 @@ export default class LaunchItemPage extends React.Component<LaunchItemPageProps,
                                                 {
                                                     this.props.launch.rocket.agencies && this.props.launch.rocket.agencies.map((agency, i) => (
                                                         <div key={i} className="agency-item">
-                                                            <p
-                                                                className="country-flag"
-                                                                style={{ backgroundImage: findFlagUrlByIso3Code(agency.countryCode) ? `url(${findFlagUrlByIso3Code(agency.countryCode)})` : `` }}
-                                                            ></p>
                                                             <p className="agency-name">{agency.name}</p>
                                                             <p className="country-name">{this.countries[agency.countryCode]}</p>
                                                             <div className="links">
@@ -256,19 +249,41 @@ export default class LaunchItemPage extends React.Component<LaunchItemPageProps,
                                             </section>
                                         }
                                         
-
-                                    </div>
-                                    <div className="card-content">
-                                        <section>
-                                            <h2>Départ</h2>
+                                        <section className="rocket">
+                                            <h2>Fusée</h2>
                                             <div className="custom-section-container">
-                                                <p
-                                                    className="country-flag"
-                                                    style={{ backgroundImage: findFlagUrlByIso3Code(this.props.launch.location.countryCode) ? `url(${findFlagUrlByIso3Code(this.props.launch.location.countryCode)})` : `` }}
+                                                <div>
+                                                    <p className="rocket-name">
+                                                        {this.props.launch.rocket.name}
+                                                    </p>
+                                                    <p className="rocket-agency">
+                                                        {this.props.launch.rocket.agencies && this.props.launch.rocket.agencies[0] && this.props.launch.rocket.agencies[0].name}
+                                                    </p>
+                                                    <div className="links">
+                                                        {this.props.launch.rocket.wikiURL.length > 0 && <UrlToCta url={this.props.launch.rocket.wikiURL} />}
+                                                        {
+                                                            (this.props.launch.rocket.infoURLs && this.props.launch.rocket.infoURLs.length > 0)
+                                                                ? this.props.launch.rocket.infoURLs.map((infoURL: any, i: number) => <UrlToCta key={i} url={infoURL} />)
+                                                                : this.props.launch.rocket.infoURL && <UrlToCta url={this.props.launch.rocket.infoURL} />
+                                                        }
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    className="rocket-img"
+                                                    style={
+                                                        (this.props.launch.rocket.imageURL !== 'https://launchlibrary1.nyc3.digitaloceanspaces.com/RocketImages/placeholder_1920.png' && typeof this.props.launch.rocket.imageURL === 'string' && this.props.launch.rocket.imageURL.includes('://'))
+                                                            ? { backgroundImage: `url(${this.props.launch.rocket.imageURL})` }
+                                                            : { backgroundImage: `url(${process.env.PUBLIC_URL}/rocket_image_placeholder.svg)`, backgroundSize: 'contain' }
+                                                    }
                                                 >
-                                                </p>
-                                                <p className="country-name">{this.countries[this.props.launch.location.countryCode]}</p>
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <section className="location">
+                                            <h2>Base de lancement</h2>
+                                            <div className="custom-section-container">
                                                 <p className="country-location-name">{this.props.launch.location.name}</p>
+                                                <p className="country-name">{this.countries[this.props.launch.location.countryCode]}</p>
                                                 <div className="links">
                                                     <UrlToCta url={`https://www.google.com/maps/search/${this.props.launch.location.name}`} />
                                                     {
@@ -278,58 +293,6 @@ export default class LaunchItemPage extends React.Component<LaunchItemPageProps,
                                                 </div>
                                             </div>
                                         </section>
-                                    </div>
-                                    <div className="card-content">
-                                        <section>
-                                            <h2>Fusée</h2>
-                                            <div className="custom-section-container">
-                                                <p
-                                                    className="rocket-img"
-                                                    style={
-                                                        (this.props.launch.rocket.imageURL !== 'https://launchlibrary1.nyc3.digitaloceanspaces.com/RocketImages/placeholder_1920.png' && typeof this.props.launch.rocket.imageURL === 'string' && this.props.launch.rocket.imageURL.includes('://'))
-                                                            ? { backgroundImage: `url(${this.props.launch.rocket.imageURL})` }
-                                                            : { backgroundImage: `url(${process.env.PUBLIC_URL}/rocket_image_placeholder.svg)`, backgroundSize: 'contain' }
-                                                    }
-                                                >
-                                                </p>
-                                                <p className="rocket-name">
-                                                    {this.props.launch.rocket.name}
-                                                </p>
-                                                <p className="rocket-agency">
-                                                    {this.props.launch.rocket.agencies && this.props.launch.rocket.agencies[0] && this.props.launch.rocket.agencies[0].name}
-                                                </p>
-                                                <div className="links">
-                                                    {this.props.launch.rocket.wikiURL.length > 0 && <UrlToCta url={this.props.launch.rocket.wikiURL} />}
-                                                    {
-                                                        (this.props.launch.rocket.infoURLs && this.props.launch.rocket.infoURLs.length > 0)
-                                                            ? this.props.launch.rocket.infoURLs.map((infoURL: any, i: number) => <UrlToCta key={i} url={infoURL} />)
-                                                            : this.props.launch.rocket.infoURL && <UrlToCta url={this.props.launch.rocket.infoURL} />
-                                                    }
-                                                </div>
-                                            </div>
-                                        </section>
-                                        {
-                                            this.props.launch.rocket.agencies && this.props.launch.rocket.agencies[0] &&
-                                            <section>
-                                                <h2>Agence</h2>
-                                                {
-                                                    this.props.launch.rocket.agencies && this.props.launch.rocket.agencies.map((agency, i) => (
-                                                        <div key={i} className="custom-section-container">
-                                                            <p
-                                                                className="country-flag"
-                                                                style={{ backgroundImage: findFlagUrlByIso3Code(agency.countryCode) ? `url(${findFlagUrlByIso3Code(agency.countryCode)})` : `` }}
-                                                            ></p>
-                                                            <p className="country-name">{this.countries[agency.countryCode]}</p>
-                                                            <p className="country-location-name">{agency.abbrev}</p>
-                                                            <div className="links">
-                                                                {agency.wikiURL && <UrlToCta url={agency.wikiURL} />}
-                                                                {agency.infoURLs.length > 0 ? agency.infoURLs.map((infoURL: any, i: number) => <UrlToCta key={i} url={infoURL} />) : agency.infoURL.length > 0 && <UrlToCta url={agency.infoURL} />}
-                                                            </div>
-                                                        </div>
-                                                    ))
-                                                }
-                                            </section>
-                                        }
                                     </div>
                                 </div>
                             </div>
